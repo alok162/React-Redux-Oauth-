@@ -8,12 +8,6 @@ const config = {
   // projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   // storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   // messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
-  apiKey: "AIzaSyAjvY8OVPoYAFtVKMNq35ttUBm2xsyQQsw",
-    authDomain: "grow-fit-project.firebaseapp.com",
-    databaseURL: "https://grow-fit-project.firebaseio.com",
-    projectId: "grow-fit-project",
-    storageBucket: "grow-fit-project.appspot.com",
-    messagingSenderId: "862272674337"
 };
 
 const app = firebase.initializeApp(config)
