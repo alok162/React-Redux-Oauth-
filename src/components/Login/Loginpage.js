@@ -25,6 +25,7 @@ class LoginPage extends Component {
       isLoading : false
     }
   }
+  // Login or signup with facebook
   authWithFacebook() {
     console.log("fb Login init");
     app.auth().signInWithPopup(facebookProvider)
@@ -51,8 +52,6 @@ class LoginPage extends Component {
 
   componentDidMount(){
   }
-
-
 //   componentWillMount() {
 //     app.auth().onAuthStateChanged(function(user) {
 //       if(user) {
@@ -102,7 +101,7 @@ class LoginPage extends Component {
       );
     }
 }
-
+// set the initial state to redux state
 const mapToStateProps = ({ uid, displayName,photoURL,email,phoneNumber,providerId,isLoggedIn }) => {
   return { uid, displayName,photoURL,email,phoneNumber,providerId,isLoggedIn }; 
 };

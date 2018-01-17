@@ -10,6 +10,7 @@ import {
     OTP_NULL
 } from '../Actions/type';
 
+// Initial state null of reducer
 const INITIAL_STATE = {
     uid : '',
     displayName : '',
@@ -19,7 +20,7 @@ const INITIAL_STATE = {
     providerId : '',
     isLoggedIn:'',
 };
-
+// Redux reducer main function to update the every state cycle
 export default (state = INITIAL_STATE,action)=>{
    console.log(state);
    console.log(action.type);
@@ -38,11 +39,3 @@ export default (state = INITIAL_STATE,action)=>{
     }
    console.log(state);
 };
-// export default function() {
-//     console.log(Login.userData);
-//     return {
-//         uid: "1596180000466149",
-//         displayName: "Alok Kumar",
-//         photoURL: "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/18…g?oh=2568620ce3e7b52406db8bfa86bedfe2&oe=5AE75451", email: "dalokrockstar@gmail.com", phoneNumber: null
-//     };
-// }

@@ -26,36 +26,30 @@ class Welcome extends Component {
         this.close = this.close.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        console.log('concole log',this.props)
       }
+    //Updating the data on state   
     handleChange(event) {
         var temp = this.state.changeData
         this.setState({displayName: event.target.value});
         console.log('event', temp,this.state.displayName)
       }
+    //Submit the editable popup form
     handleSubmit(event) {
         console.log('onsubmit',this.state)
         this.updateUserData(this.state)
         event.preventDefault(this.state);
       }
-    
+    // Close user data editable popup
     close() {
         this.setState({ showModal: false });
-        // this.updateUserData()
         }
-    
+    // Open user data editable popup
     open(data) {
         console.log('onclick', data);
         this.setState({ showModal: true, changeData: data });
         }
-
-    togglePopup() {
-        this.setState({
-          showPopup: !this.state.showPopup
-        });
-
-
-      }
-
+// Update user data into firebase database server from state
     updateUserData(param) {
         var userId = firebase.auth().currentUser.providerData[0].uid;
         console.log('writedata',userId,param,param.uid);
@@ -66,11 +60,10 @@ class Welcome extends Component {
           phone_number: param.phoneNumber
         });
       }
-
+// Firebase life cycle for cheking the current users details
     componentWillMount() {
       app.auth().onAuthStateChanged(function(user) {
        if(user) {
-        // this.updateUserData(user.providerData[0])
           localStorage.setItem('username', user.displayName);
           this.setState({displayName: user.displayName,email: user.email,uid:user.providerData[0].uid})
            console.log('welcome', user.providerData[0] );
@@ -112,14 +105,7 @@ class Welcome extends Component {
                 <a href="#"><span onClick={this.open.bind(this,'phoneNumber')} class="glyphicon glyphicon-pencil"></span></a>
             </div>
         </div>
-        {/* <div class="form-group">
-            <label for="inputEmail" class="control-label col-xs-2">Date of Birth</label>
-            <div class="col-xs-10">
-                <p class="form-control-static">harrypotter@mail.com</p>
-                <a href="#"><span onClick={this.open.bind(this,this.state.email)} class="glyphicon glyphicon-pencil"></span></a>
-            </div>
-        </div> */}
-       
+       {/* Data modal or popup to change the user data  */}
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Please Change {this.state.changeData}</Modal.Title>
@@ -139,16 +125,14 @@ class Welcome extends Component {
           </form>
         </Modal>
     </form>
-    
     ) : (
-      <ul>
-      </ul>
+      <div></div>
       )}
       </div>
         );
     }
 }
-
+// Set the current state into redux
 const mapToStateProps = ({ uid, displayName,photoURL,email,phoneNumber,providerId,isLoggedIn }) => {
     return { uid, displayName,photoURL,email,phoneNumber,providerId,isLoggedIn }; 
   };

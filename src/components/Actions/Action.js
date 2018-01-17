@@ -1,10 +1,6 @@
 import react from 'react';
-
+// Redux action
 import {
-    CLIENTID_CHANGED,
-    OTP_SUCCESS,
-    OTP_FAILED,
-    CLIENT_ID_NULL,
     LOADING,
     LOGIN_SUCCESS,
     LOGIN_FAILED,
