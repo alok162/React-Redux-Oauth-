@@ -38,24 +38,11 @@ class LoginPage extends Component {
         }
       })
   }
-  //  componentWillMount() {
-  //    app.auth().onAuthStateChanged(function(user) {
-  //     if(user) {
-  //         console.log("Login Success init",user);
-  //         // this.props.fbLoginChanged(user.user.providerData[0]);
-  //     }
-  //   })
-  // }
 
-  componentDidMount(){
-  }
   componentWillMount() {
     app.auth().onAuthStateChanged(function(user) {
       if(user) {
         console.log('main redux store',user.providerData[0])
-        this.props.fbLoginChanged(user.user.providerData[0]);
-          // console.log('currentuid',localStorage.getItem('username'));
-          // this.userData = user.providerData[0];
       }
     });
 } 
