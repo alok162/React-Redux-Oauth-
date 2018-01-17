@@ -11,11 +11,14 @@ import {
 } from './type';
 
 export const fbLoginChanged = (text) => {
-    console.log("fb Login change");
-    console.log(text);
+    console.log("fb Login change",text,text.uid,text.displayName,text.photoURL,text.email,text.phoneNumber,text.phoneNumber);
     return  {
-        type: LOGIN_SUCCESS,
-        payload: text
+        uid: text.uid,
+        displayName: text.displayName,
+        photoURL: text.photoURL,
+        email: text.email,
+        phoneNumber: '1234567890',
+        providerId: '1234567'
     };
 };
 
