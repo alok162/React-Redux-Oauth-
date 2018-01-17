@@ -33,36 +33,32 @@ class LoginPage extends Component {
         if (error) {
           this.toaster.show({ intent: Intent.DANGER, message: "Unable to sign in with Facebook" })
         } else {
-          this.props.fbLoginChanged(user.user.providerData[0]);
-          console.log('facebook login function',user, user.user.providerData[0].uid,user.user.providerData[0].displayName);
+          // this.props.fbLoginChanged(user.user.providerData[0]);
           this.setState({ redirect: true })
         }
       })
   }
-   componentWillMount() {
-    //  console.log("Login Success init");
-    //  app.auth().onAuthStateChanged(function(user) {
-    //   console.log("Login Success init");
-    //   console.log(user);
-    //   if(user) {
-    //       console.log('userData', localStorage.getItem('username'));
-    //   }
-    // })
-  }
+  //  componentWillMount() {
+  //    app.auth().onAuthStateChanged(function(user) {
+  //     if(user) {
+  //         console.log("Login Success init",user);
+  //         // this.props.fbLoginChanged(user.user.providerData[0]);
+  //     }
+  //   })
+  // }
 
   componentDidMount(){
   }
-//   componentWillMount() {
-//     app.auth().onAuthStateChanged(function(user) {
-//       if(user) {
-//         console.log('main redux store',user.providerData[0])
-//           localStorage.setItem('username', JSON.stringify(user.providerData[0]));
-//           // console.log('currentuid',localStorage.getItem('username'));
-//           // this.userData = user.providerData[0];
-//           console.log('userData', localStorage.getItem('username'));
-//       }
-//     });
-// } 
+  componentWillMount() {
+    app.auth().onAuthStateChanged(function(user) {
+      if(user) {
+        console.log('main redux store',user.providerData[0])
+        this.props.fbLoginChanged(user.user.providerData[0]);
+          // console.log('currentuid',localStorage.getItem('username'));
+          // this.userData = user.providerData[0];
+      }
+    });
+} 
 
   authWithEmailPassword(event) {
      event.preventDefault();
@@ -102,8 +98,9 @@ class LoginPage extends Component {
     }
 }
 // set the initial state to redux state
-const mapToStateProps = ({ uid, displayName,photoURL,email,phoneNumber,providerId,isLoggedIn }) => {
-  return { uid, displayName,photoURL,email,phoneNumber,providerId,isLoggedIn }; 
+const mapToStateProps = ({ uid, displayName,photoURL,email,phoneNumber,providerId }) => {
+  console.log('maptostateprops', uid,displayName)
+  return { uid, displayName,photoURL,email,phoneNumber,providerId }; 
 };
  
 export default connect(mapToStateProps, {fbLoginChanged})(LoginPage);
