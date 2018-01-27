@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Router, Route } from 'react-router-dom';
-import LoginPage from './components/Login/Loginpage';
-import  Welcome from './components/Welcome/Welcome';
-import { Signup } from './components/Signup/Signup';
-import { Logout } from  './components/Logout/Logout';
+import Login from './components/login/login';
+import  Welcome from './components/welcome/welcome';
+import { Signup } from './components/signup/signup';
+import { Logout } from  './components/logout/logout';
 
 export const Routes = () => (
 <BrowserRouter>
   <Switch>
-      <Route path='/login' component={ LoginPage}/>
+      <Route path='/login' component={ Login}/>
       <Route exact path='/' component={Welcome}/>
       <Route path='/signup' component={Signup}/>
       <Route path='/logout' component={Logout}/>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/foundation.min.css';
-import Header from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
-import { Welcome } from './components/Welcome/Welcome';
+// import Header from './components/header/header';
+import { Footer } from './components/footer/footer';
+import { Welcome } from './components/welcome/welcome';
 import './styles/custom.css';
 import { Routes } from './routes';
 
@@ -26,7 +26,7 @@ class App extends Component {
               <span className="title-bar-title">Home</span>
             </div>
           </div>
-          <Header authenticated={this.state.authenticated} name={this.state.appName}/>
+          {/* <Header authenticated={this.state.authenticated} name={this.state.appName}/> */}
          <Routes/>
           <hr/>
             <Footer/>
